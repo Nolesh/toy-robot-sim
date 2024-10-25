@@ -4,6 +4,8 @@
 
 This is a simulation program where a Toy Robot moves on a tabletop grid (default 5x5, customizable). The Toy Robot can move freely on the surface but is safeguarded from falling off the edges.
 
+![toy robot simulation screenshot](https://raw.githubusercontent.com/nolesh/toy-robot-sim/master/public/toy-robot-sim-screenshot.png)
+
 ## Getting Started
 
 1. **Clone the Repository**:
