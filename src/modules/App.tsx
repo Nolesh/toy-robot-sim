@@ -1,5 +1,10 @@
 import React, { useState } from "react";
-import { directions, TDirection, TMovementCmd, ToyRobot } from "../core/ToyRobot";
+
+import { TDirection, TMovementCmd } from "../core/AbstractToyRobot";
+
+// import { ToyRobot } from "../core/ToyRobotLinkedList";
+import { ToyRobot } from "../core/ToyRobot";
+
 import { Button } from "components/Button";
 import { Table } from "components/Table";
 import { Output } from "components/Output";
@@ -57,7 +62,7 @@ const App = () => {
           <div className="flex items-center gap-2 border border-slate-200 p-2">
             <Input max={TABLE_SIZE-1} title="X:" name="x" value={values.x} onChange={(val) => onSetValues('x', Number.parseInt(val))} />
             <Input max={TABLE_SIZE-1} title="Y:" name="y" value={values.y} onChange={(val) => onSetValues('y', Number.parseInt(val))} />
-            <ComboBox title="Dir:" options={directions} onSelect={(val) => onSetValues('dir', val)} />
+            <ComboBox title="Dir:" options={ToyRobot.directions} onSelect={(val) => onSetValues('dir', val)} />
             <Button title="Place" onClick={() => { handlePlace() }} />
           </div>
 

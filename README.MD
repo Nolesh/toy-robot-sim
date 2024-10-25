@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is a simulation program where a Toy Robot moves on a tabletop grid (default 5x5, customizable). The Toy Robot can move freely on the surface but is safeguarded from falling off the edges.
+This is a simulation program where a Toy Robot moves on a tabletop grid (default 5x5, customizable). The Toy Robot can move freely on the surface but is safeguarded from falling off the edges. There are two implementations of the Toy Robot, both derived from a common abstract class, `AbstractToyRobot`. The only difference between them lies in the approach to changing direction: one uses a simple array, while the other leverages a linked list.
 
 ![toy robot simulation screenshot](https://raw.githubusercontent.com/nolesh/toy-robot-sim/master/public/toy-robot-sim-screenshot.png)
 
@@ -29,7 +29,7 @@ This is a simulation program where a Toy Robot moves on a tabletop grid (default
 
 ## Test Coverage
 
-Tests are provided for the LinkedList and ToyRobot classes. To run them, use the following command:
+Tests are provided for the LinkedList, ToyRobot, and ToyRobotLinkedList classes. To run them, use the following command:
 ```bash
    npm test
    ```

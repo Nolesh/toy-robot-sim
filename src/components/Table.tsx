@@ -1,4 +1,4 @@
-import { TDirection } from "core/ToyRobot";
+import { TDirection } from "../core/AbstractToyRobot";
 import React from "react";
 
 interface ITableProps {
