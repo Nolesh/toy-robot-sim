@@ -16,7 +16,7 @@ export abstract class AbstractToyRobot<T> {
     protected static dirs: TDirection[] = ['NORTH', 'EAST', 'SOUTH', 'WEST'];
     private TABLE_SIZE: number;
     protected robotState: IRobotState<T> | null;
-    
+
     // constructor(x: number = 0, y: number = 0, dir: TDirection = 'NORTH', tableSize: number = 5) {
     //     this.TABLE_SIZE = tableSize;
     //     this.robotState = this.createState(x, y, dir);
@@ -26,29 +26,30 @@ export abstract class AbstractToyRobot<T> {
         this.TABLE_SIZE = tableSize;
         this.robotState = null;
     }
-        
+
     protected abstract get currentDirection(): TDirection;
-    
+
     protected abstract rotate(clockwise: boolean): void;
 
-    protected abstract createState(x: number, y: number, dir: TDirection) : IRobotState<T>;
-    
+    protected abstract createState(x: number, y: number, dir: TDirection): IRobotState<T>;
+
 
     place(x: number, y: number, dir: TDirection) {
+        if ((x < 0 || x >= this.TABLE_SIZE) || (y < 0 || y >= this.TABLE_SIZE)) return;
         this.robotState = this.createState(x, y, dir);
     }
 
     execCmd(cmd: TMovementCmd) {
-        if(!this.robotState) return;
+        if (!this.robotState) return;
 
         switch (cmd) {
             case 'MOVE':
                 switch (this.currentDirection) {
                     case 'NORTH':
-                        if (this.robotState.y < this.TABLE_SIZE-1) this.robotState.y++;                                                
+                        if (this.robotState.y < this.TABLE_SIZE - 1) this.robotState.y++;
                         break;
                     case 'EAST':
-                        if (this.robotState.x < this.TABLE_SIZE-1) this.robotState.x++;
+                        if (this.robotState.x < this.TABLE_SIZE - 1) this.robotState.x++;
                         break;
                     case 'SOUTH':
                         if (this.robotState.y > 0) this.robotState.y--;
@@ -66,15 +67,15 @@ export abstract class AbstractToyRobot<T> {
                 break;
         }
     }
-    
+
     report() {
-        if(!this.robotState) return '';
-        console.log('state', this.robotState.toString());        
+        if (!this.robotState) return '';
+        console.log('state', this.robotState.toString());
         return this.robotState.toString();
     }
 
     get state() {
-        if(!this.robotState) return null;
+        if (!this.robotState) return null;
         return {
             x: this.robotState.x,
             y: this.robotState.y,
@@ -82,7 +83,7 @@ export abstract class AbstractToyRobot<T> {
         }
     }
 
-    static get directions(){
+    static get directions() {
         return AbstractToyRobot.dirs;
     }
 }

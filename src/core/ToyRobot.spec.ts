@@ -12,6 +12,23 @@ describe("ToyRobot", () => {
         expect(toyRobot.state).toBeNull();
     });
 
+    test("should not place the robot due to wrong coords", () => {
+        toyRobot.place(-1, 0, 'NORTH');
+        expect(toyRobot.state).toBeNull();
+
+        toyRobot.place(-1, -1, 'NORTH');
+        expect(toyRobot.state).toBeNull();
+
+        toyRobot.place(0, -1, 'NORTH');
+        expect(toyRobot.state).toBeNull();
+
+        toyRobot.place(5, 0, 'NORTH');
+        expect(toyRobot.state).toBeNull();
+
+        toyRobot.place(0, 5, 'NORTH');        
+        expect(toyRobot.state).toBeNull();
+    });
+
     test("should place the robot at a valid position with a given direction", () => {
         toyRobot.place(0, 0, 'NORTH');
         expect(toyRobot.state).toEqual({ x: 0, y: 0, dir: 'NORTH' });
@@ -87,4 +104,6 @@ describe("ToyRobot", () => {
         const report = toyRobot.report();
         expect(report).toBe("x=1, y=2, dir=EAST");
     });
+
+    
 });
